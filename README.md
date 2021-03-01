@@ -1,7 +1,6 @@
  # ansible-dev (Project Title)
  
- One paragraph of your project description goes here. Describe what you're trying to do.
- What is the purpose of putting up this repo?
+ I've already learned that Ansible is a `Python` framework and can't wait to see what else we can do with it! 
  
  ## Getting Started
  
