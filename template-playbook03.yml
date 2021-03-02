@@ -1,0 +1,19 @@
+# Lab 23 - Challenge 03
+# Not sure if 'task vars' formatting is best practice..
+# Option 2: Create new template using "item.planet"
+---
+- name: Exploring the template module and jinja expressions
+  hosts: planetexpress
+  connection: ssh
+  gather_facts: no   # runs the "setup" module on remote hosts
+
+  tasks:
+    - name: Configure ranked mission orders
+      template:
+        src: templates/mission-orders.txt.j2    # name of the template on ansible controller
+        dest: "~/{{ item.mission }}-mission-orders.txt"     # name of the completed file to be placed on the target system
+      vars:
+        - planet: "{{ item.planet }}"
+      loop: 
+        - {"mission": "primary", "planet": "luna park"}
+        - {"mission": "secondary", "planet": "cineplex 14"}
