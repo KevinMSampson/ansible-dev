@@ -1,0 +1,8 @@
+# Testing @rzfeeser's collection:
+# https://galaxy.ansible.com/rzfeeser/ansible_role_free_linux_term_games
+- name: "Make some free linux terminal games {{ absentorpresent }}"
+  hosts: localhost
+  connection: local
+
+  roles:
+       - ansible-role-free-linux-term-games
