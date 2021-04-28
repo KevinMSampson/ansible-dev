@@ -39,7 +39,7 @@ options:
         required: false
     date:
         description:
-            - This is the date to send to the module [YYYY-MM-DD].
+            - This is the date to send to the module [YYYY-MM-DD]. Defaults to 2017-01-01.
             - Note: Dates beyond April 2017 may result in unstable lookups.
         required: false
 
@@ -55,6 +55,7 @@ EXAMPLES = '''
     lon:
     lat:
     dest: /tmp/
+    date: 2017-01-01
 '''
 
 RETURN = '''
@@ -78,7 +79,7 @@ def run_module():
         lon=dict(type='float', required=True),
         lat=dict(type='float', required=True),
         dest=dict(type='str', required=False, default="/tmp/"),
-        date=dict(type='str', required=False)
+        date=dict(type='str', required=False, default="2017-01-01")
     )
 
     # seed the result dict in the object
@@ -103,7 +104,7 @@ def run_module():
 
     # https://api.nasa.gov/planetary/earth/imagery/?lon=77.593675&lat=12.972172&date=2016-03-09&api_key=DEMO_KEY
 
-    nasaurl = f"https://api.nasa.gov/planetary/earth/imagery/?lon={ module.params['lon'] }&lat={ module.params['lat'] }&date=2017-01-01&api_key={ module.params['apikey'] }"
+    nasaurl = f"https://api.nasa.gov/planetary/earth/imagery/?lon={ module.params['lon'] }&lat={ module.params['lat'] }&date={ module.params['date'] }&api_key={ module.params['apikey'] }"
 
     result['url'] = nasaurl
 
