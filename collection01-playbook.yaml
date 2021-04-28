@@ -1,11 +1,12 @@
-- name: Using a Collection
+---
+- name: Playbook using custom module
   hosts: localhost
   connection: local
-
+  
   collections:
-  - adalovelace.myfirstcollection
+          - acmeinc.middleware
 
   tasks:
-  - name: Example of how to use a collection
-    debug:
-      msg: "Any new modules, roles, or other distributables included in the role would not be usable!"
+  - name: Pull Mars weather
+    nasa_mars_weather:
+      name: MarsWeatherReport   # the module adds *.txt to the file name
